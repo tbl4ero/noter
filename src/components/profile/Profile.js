@@ -18,6 +18,7 @@ class Profile extends React.Component {
     logout = () => {
         localStorage.clear();
         this.setState({logged: false});
+        this.props.resetState();
     }
 
     componentDidMount = async() => {
@@ -62,6 +63,9 @@ export default  connect(
         return {
             setInitialNotes: (notes) =>  {
                 dispatch({ type: "SET_NOTES", active: notes.length != 0 ? 0 : null, notes: notes});
+            },
+            resetState: () => {
+                dispatch({ type: "RESET_STATE" });
             }
         }
     }

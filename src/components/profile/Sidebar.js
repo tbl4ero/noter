@@ -9,7 +9,7 @@ import AddNote from './AddNote';
 function Sidebar(props) {
     return (
         <div>
-            <SideBar display={props.editor} direction="column">
+            <SideBar view={props.editor} direction="column">
                 <ProfileBox direction="column">
                     <ProfileIcons>
                         <SignOutBox>

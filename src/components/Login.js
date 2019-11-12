@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
-import { Loading, LoginButton, Form, FormInput, LoginHeader } from './sc/mainSc';
+import { Animated, Loading, LoginButton, Form, FormInput, LoginHeader } from './sc/mainSc';
 
 class Login extends React.Component {
     
@@ -61,16 +61,18 @@ class Login extends React.Component {
                     <Loading />
                     :
                     <div className="login-wrapper">
-                        <LoginHeader>Sign In</LoginHeader>
-                        <LoginHeader secondary >Enter your login and password to sign in</LoginHeader>
+                        <Animated height={"150px"} open>
+                            <LoginHeader>Sign In</LoginHeader>
+                            <LoginHeader secondary >Enter your login and password to sign in</LoginHeader>
+                        </Animated>
                         {this.state.wrongInfo ? <LoginHeader error secondary>Incorrect login or password</LoginHeader> : ''}
                         <Form onSubmit={this.handleLogin}>
-                            <FormInput  onChange={this.handleLoginChange} 
+                            <FormInput required onChange={this.handleLoginChange} 
                                     type="text" 
                                     placeholder="Login" 
                                     value={this.state.login} 
                             />
-                            <FormInput  onChange={this.handlePwdChange} 
+                            <FormInput required onChange={this.handlePwdChange} 
                                     type="password" 
                                     placeholder="Password" 
                                     value={this.state.passwd} 

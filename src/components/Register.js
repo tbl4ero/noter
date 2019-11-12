@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, BrowserRouter as Router, Link } from 'react-router-dom';
-import { Loading, LoginButton, Form, FormInput, LoginHeader } from './sc/mainSc';
+import { Animated, Loading, LoginButton, Form, FormInput, LoginHeader } from './sc/mainSc';
 
 class Register extends React.Component {
     state = {
@@ -71,12 +71,14 @@ class Register extends React.Component {
                         <Loading />
                         :  
                         <div className="login-wrapper reg">
-                            <LoginHeader>Sign Up</LoginHeader>
-                            <LoginHeader secondary>Enter login and and password for your new account</LoginHeader>
+                            <Animated open height={"150px"}>
+                                <LoginHeader >Sign Up</LoginHeader>
+                                <LoginHeader secondary>Enter login and and password for your new account</LoginHeader>
+                            </Animated>
                             {this.state.userExists && <LoginHeader error secondary>Chosen username is already taken</LoginHeader>}
                             <Form  onSubmit={this.handleReg}>
-                                <FormInput onChange={this.handleLoginChange} type="text" value={this.state.login} placeholder="Login" />
-                                <FormInput onChange={this.handlePwdChange} type="password" value={this.state.pass} placeholder="Password" />
+                                <FormInput required onChange={this.handleLoginChange} type="text" value={this.state.login} placeholder="Login" />
+                                <FormInput required onChange={this.handlePwdChange} type="password" value={this.state.pass} placeholder="Password" />
                                 <LoginButton type="submit" value="Sign Up" />
                             </Form>
                             <Link to="/">Sign In</Link>

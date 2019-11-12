@@ -37,10 +37,12 @@ const MainBox = styled.div`
     overflow: hidden;
     grid-template-columns: 15vw auto;  
     @media screen and (max-width: 850px) {
-    grid-template-columns: ${props => props.view ? "0 100vw" : "100vw 0"};
+        transition: .3s ease-in-out;
+        grid-template-columns: ${props => props.view ? "0 100vw" : "100vw 0"};
     }
 
 `;
+
 
 const SideBar = styled(StyledBox)`
     grid-row: 100vh;
@@ -49,7 +51,6 @@ const SideBar = styled(StyledBox)`
     height: 100vh;
     border-right: 1px solid black;
     @media screen and (max-width: 850px) {
-        grid-column: ${props => props.view ? 0 : "100vw"};
         display: flex;
         border-right: none;
     }
@@ -74,13 +75,10 @@ const GetBack = styled.div`
 `;
 
 const EditorBox = styled(StyledBox)`
-    grid-column: 85vw;
-    grid-row: 100vh;
     display: grid;
     overflow: hidden;
     @media screen and (max-width: 850px) {
         grid-template-rows: 65px auto;
-        animation: ${swipe} .5s forwards;
     }
 `;
 
@@ -258,7 +256,7 @@ const deAnim = keyframes`
 
 
 const Animated = styled.div`
-    height: 100px;
+    height: ${props => props.height};
     overflow: hidden;
     display: flex;
     color: black;

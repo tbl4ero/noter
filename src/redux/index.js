@@ -1,6 +1,8 @@
 import { createStore } from 'redux';
 
-function reducer(state = {notes: [], active: { id: null, text: null, title: null }}, action) {
+const defaultState =  {notes: [], active: { id: null, text: null, title: null }};
+
+function reducer(state = defaultState, action) {
     switch (action.type) {
         case "ADD_NOTE": {
             let newActiveNote = action.note;
@@ -59,6 +61,9 @@ function reducer(state = {notes: [], active: { id: null, text: null, title: null
         }
         case "SWITCH_VIEW": {
             return Object.assign({}, state, { editor: action.editor })
+        }
+        case "RESET_STATE": {
+            return defaultState;
         }
         default: {
             return state;

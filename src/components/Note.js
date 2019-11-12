@@ -31,21 +31,19 @@ class Note extends React.Component {
     handleSwipe = (e) => {
         if (e.changedTouches[0].clientX < this.state.swipeX-100) {
             this.setState({swipe: false, swipeX: null, fullSwipe: true });
-            setTimeout(() => {
-                this.props.deleteNote(this.props.id, this.props.noteId);
-            }, 300);
+            setTimeout(() => this.props.deleteNote(this.props.id, this.props.noteId), 500);
         }
     }
 
     render() {
         return (
-            <Animated onTouchStart={(e) => {
+            <Animated  open={this.state.animate} height="100px" onTouchStart={(e) => {
                     this.setState({swipe: true, swipeX: e.touches[0].clientX});
                 }}
                 onTouchMove={this.handleSwipe} 
                 onTouchEnd={() => this.setState({swipe: false, swipeX: null})}
                 style={{minHeight: '100px'}} 
-                open={this.state.animate}
+
                 >
                 <NoteBox
                     onClick={() => {
@@ -59,7 +57,7 @@ class Note extends React.Component {
                     <XButton>
                         <FontAwesomeIcon icon={faTimes} onClick={(e) => {
                             e.stopPropagation();
-                            this.setState({animate: false});
+                            this.setState({animate: true});
                             setTimeout(() => this.props.deleteNote(this.props.id, this.props.noteId),300);
                         }} />
                     </XButton>
@@ -92,14 +90,14 @@ export default connect(
             dispatch({type: "SWITCH_VIEW", editor: true});
         },
         deleteNote: async(id, noteId) => {
-            await fetch(
+            dispatch({ type: "DELETE_NOTE", id });
+            fetch(
                 `http://127.0.0.1:5000/api/note/${localStorage.getItem('loginToken')}/${noteId}`,
                 {
                     method: 'DELETE',
                     mode: 'cors'
                 }
             );
-            dispatch({ type: "DELETE_NOTE", id });
         }
     };
 })(Note);

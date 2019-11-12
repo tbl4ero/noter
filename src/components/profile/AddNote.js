@@ -30,7 +30,7 @@ class AddNote extends React.Component {
     render() {
         return (
             <StyledBox bg="rgba(0,0,0,.2)" centered mobileHeight="30vw" order={0} direction="column">
-                <Animated open={!this.state.mobileHidden}>
+                <Animated height="100px" open={!this.state.mobileHidden}>
                     <AddNoteButton hidden={this.state.mobileHidden} onClick={() => {this.setState({
                         hidden: !this.state.hidden, 
                         noTitle: this.state.noTitle ? false : null,
@@ -40,7 +40,7 @@ class AddNote extends React.Component {
                     </AddNoteButton>
                 </Animated>
 
-                <Animated open={!this.state.hidden}>
+                <Animated height="100px" open={!this.state.hidden}>
                         <FormWrapper>
                             <StyledInput 
                                 placeholder="Note title"
@@ -53,7 +53,7 @@ class AddNote extends React.Component {
                         </FormWrapper>
                         {
                             this.state.noTitle &&
-                            <Animated style={{height: 35}} open={this.state.noTitle} >
+                            <Animated height="100px" style={{height: 35}} open={this.state.noTitle} >
                                 <ErrorMessage style={{lineHeight: 0, margin: 0, padding: 0, color: "#ec644b"}}>* you must specify a title</ErrorMessage>
                             </Animated>
                         }

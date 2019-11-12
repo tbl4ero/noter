@@ -11,7 +11,8 @@ const noteSchema = new mongoose.Schema({
 const userSchema = new mongoose.Schema({
     login: {
         type: String,
-        unique: true
+        unique: true,
+        index: true
     },
     password: {
         type: String,
@@ -30,9 +31,10 @@ const userSchema = new mongoose.Schema({
 userSchema.set('versionKey', false);
 
 const User = mongoose.model('User', userSchema);
+User.on('index', () => console.log("created index"));
 
 const connectDb = () => {
-    return mongoose.connect((MONGODB_URI || "mongodb+srv://adm:fktlfey@cluster0-z38lz.gcp.mongodb.net/noter?retryWrites=true&w=majority")
+    return mongoose.connect(( process.env.MONGODB_URI || "mongodb+srv://adm:fktlfey@cluster0-z38lz.gcp.mongodb.net/noter?retryWrites=true&w=majority")
         , {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 };
 
