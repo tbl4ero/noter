@@ -26,6 +26,7 @@ const swipe = keyframes`
     }
     100% {
         width: 0;
+        padding: 0;
         align-self: flex-start;
     }
 `;

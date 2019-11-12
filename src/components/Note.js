@@ -3,7 +3,7 @@ import { NoteBox, NoteHeader, XButton, Animated } from './sc/mainSc';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import {CSSTransition} from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 
 
 function formatText(incoming) {
@@ -58,7 +58,7 @@ class Note extends React.Component {
                         <FontAwesomeIcon icon={faTimes} onClick={(e) => {
                             e.stopPropagation();
                             this.setState({animate: true});
-                            setTimeout(() => this.props.deleteNote(this.props.id, this.props.noteId),300);
+                            setTimeout(() => this.props.deleteNote(this.props.id, this.props.noteId), 300);
                         }} />
                     </XButton>
                     <NoteHeader style={{opacity: ".8"}} size={20}>{this.props.title}</NoteHeader>
