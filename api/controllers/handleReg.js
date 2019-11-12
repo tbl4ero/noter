@@ -7,7 +7,6 @@ const {User} = require('../models/connectDb');
 router.use(bodyParser.urlencoded({ extended: true }));
 
 function handleReg(req,resp) {
-    console.log(req.body.pass);
     new User({
         login: req.body.login, 
         password: req.body.pass,

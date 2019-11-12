@@ -48,7 +48,6 @@ function Editor(props) {
 
 export default connect(
     state => {
-        console.log(state);
         return {
             value: state.active.text || '',
             initValue: state.active.id === null ? '' : state.active.text, 
