@@ -34,7 +34,7 @@ class Profile extends React.Component {
                 this.setState({logged: false});
                 return;
             } else {
-                this.props.setInitialNotes(data.notes);
+                this.props.setInitialNotes(data.notes.map((e,id) => Object.assign({}, e, {id})));
                 this.setState({login: data.login});
             }
         });

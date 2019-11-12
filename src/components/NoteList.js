@@ -7,12 +7,16 @@ function NoteList(props) {
     return (
         <StyledBox style={{marginTop: "20px", overflow: 'auto'}} mobileHeight="55vh" mobileWidth="100vw" direction="column">
             {props.notes.length === 0 ? <h1 style={{textAlign: "center"}}>You don't have any notes</h1> : props.notes.map((note, id) => 
+            {
+                
+                return (
                 <Note
                     id={id}
                     active={id == props.active ? true : false} 
                     {...note} 
                     key={note.noteId} 
-                />
+                />);
+            } 
             )}
         </StyledBox>
     );

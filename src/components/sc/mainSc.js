@@ -26,6 +26,7 @@ const swipe = keyframes`
     }
     100% {
         width: 0;
+        opacity: 0;
         padding: 0;
         align-self: flex-start;
     }
@@ -62,7 +63,7 @@ const GetBack = styled.div`
     align-items: center;
     margin: 4px;
     border-radius: 10px;
-    height: 20;
+    height: 20px;
     margin: auto 5px;
     padding: 10px;
     color: royalblue;
@@ -79,7 +80,7 @@ const EditorBox = styled(StyledBox)`
     display: grid;
     overflow: hidden;
     @media screen and (max-width: 850px) {
-        grid-template-rows: 65px auto;
+        grid-template-rows: 10vh auto;
     }
 `;
 
@@ -119,9 +120,8 @@ const Circle = styled.div`
     background: ${props => props.bg ? props.bg : "#333"};
     max-width: 50px;
     @media screen and (max-width: 850px) {
-        width: calc(50px + (70 - 50) * ((100vw - 350px) / (850 - 350)));
-        max-width: 100px;
-        height: calc(50px + (70 - 50) * ((100vw - 350px) / (850 - 350)));
+        min-width: calc(50px + (70 - 50) * ((100vw - 350px) / (850 - 350)));
+        min-height: calc(50px + (70 - 50) * ((100vw - 350px) / (850 - 350)));
     }
 `;
 
