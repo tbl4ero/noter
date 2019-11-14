@@ -114,14 +114,11 @@ const NoteBox = styled(StyledBox)`
 `;
 
 const Circle = styled.div`
-    width: ${props => props.size ? props.size : "50px"};
-    height: ${props => props.size ? props.size : "50px"};
+    font-size: ${props => props.size ? props.size : "50px"};
     border-radius: 50%;
     background: ${props => props.bg ? props.bg : "#333"};
-    max-width: 50px;
     @media screen and (max-width: 850px) {
-        min-width: calc(50px + (70 - 50) * ((100vw - 350px) / (850 - 350)));
-        min-height: calc(50px + (70 - 50) * ((100vw - 350px) / (850 - 350)));
+        font-size: calc(50px + (70 - 50) * ((100vw - 350px) / (850 - 350)));
     }
 `;
 
@@ -132,9 +129,9 @@ const ProfileBox = styled(StyledBox)`
     flex-direction: column;
     box-sizing: border-box;
     font-size: calc(12px + (18 - 12) * ((100vw - 1000px) / (1600 - 1000)));
-    padding-bottom: 4vh;
+    padding-bottom: 20px;
     @media screen and (max-width: 850px) {
-        padding-bottom: 5vh;
+        padding-bottom: 20px;
         font-size: calc(18px + (28 - 18) * ((100vw - 350px) / (850 - 350)));
     }
 `;
@@ -188,6 +185,7 @@ const StyledInput = styled.input`
     border-radius: 10px;
     @media screen and (max-width: 850px) {
         max-width: none;
+        outline: none;
         width: 40vw;
         font-size: calc(18px + (30 - 18) * ((100vw - 350px) / (850 - 350)));
     }
@@ -279,8 +277,8 @@ const DisabledBox = styled.div`
 const ProfileIcons = styled.div`
     display: flex;
     font-size: 25px;
-    width: 10vw;
     padding: 10px;
+    padding-bottom: 40px;
     justify-content: flex-start;
     @media screen and (max-width: 850px) {
         align-self: flex-start;
@@ -308,6 +306,7 @@ const FormWrapper = styled.div`
 
 const SignOutBox = styled.div`
     border-radius: 8px;
+    cursor: pointer;
     padding: 5px;
     font-size: 14px;
     transition: .3s ease-in-out;

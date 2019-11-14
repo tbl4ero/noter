@@ -3,8 +3,9 @@ import { SignOutBox,Circle, MainBox, ProfileBox, SideBar, ProfileIcons } from '.
 import NoteList from '../NoteList';
 import {connect} from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import AddNote from './AddNote';
+
 
 function Sidebar(props) {
     return (
@@ -12,11 +13,11 @@ function Sidebar(props) {
             <SideBar view={props.editor} direction="column">
                 <ProfileBox direction="column">
                     <ProfileIcons>
-                        <SignOutBox>
-                            <FontAwesomeIcon style={{cursor: "pointer"}} icon={faSignOutAlt} onClick={props.logout} />
+                        <SignOutBox onClick={props.logout}>
+                            Sign Out
                         </SignOutBox>
                     </ProfileIcons>
-                    <Circle size="3vw"></Circle>
+                    <FontAwesomeIcon style={{fontSize: "calc(70px + (90 - 70) * ((100vw - 350px) / (1600 - 350)))", borderRadius: "50%", boxShadow: "0px 0px 5px 0px rgba(0,0,0,0.75)", border: "1px solid white"}} icon={faUserCircle} />
                     <h3 style={{margin: 0}}>{props.login}</h3>
                 </ProfileBox>
                 <AddNote></AddNote>

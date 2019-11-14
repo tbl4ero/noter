@@ -21,20 +21,21 @@ function Editor(props) {
             </DisabledBox>
             :
             <ReactQuill
-            modules = {{
-                toolbar: [
-                  [{ 'header': [1, 2, 3, 4, false] }],
-                  ['bold', 'italic', 'underline','strike', 'blockquote'],
-                  [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-                  ['link', 'image', 'video'],
-                  ['clean']
-                ]}}
-                formats={[
-                    'header',
-                    'bold', 'italic', 'underline', 'strike', 'blockquote',
-                    'list', 'bullet', 'indent',
-                    'link', 'image', 'video'
-                  ]}
+                modules = {{
+                    toolbar: [
+                    [{ 'header': [1, 2, 3, 4, false] }],
+                    ['bold', 'italic', 'underline','strike', 'blockquote'],
+                    [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+                    ['link', 'image', 'video'],
+                    ['clean']
+                    ]}}
+                    formats={[
+                        'header',
+                        'bold', 'italic', 'underline', 'strike', 'blockquote',
+                        'list', 'bullet', 'indent',
+                        'link', 'image', 'video'
+                ]}
+                style={{"font-size": "16px"}}
                 theme="snow"
                 style={{width: 'inherit'}}
                 bounds={".quill"}
