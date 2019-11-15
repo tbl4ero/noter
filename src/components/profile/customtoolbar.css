@@ -1,10 +1,4 @@
 
-.ql-bubble .ql-picker.ql-font .ql-picker-item:before, .ql-bubble .ql-picker.ql-font .ql-picker-label:before {
-}
-
-.ql-snow .ql-picker.ql-font .ql-picker-item:before, .ql-bubble .ql-picker.ql-font .ql-picker-label:before {
-}
-
 .ql-font span[data-label="Ubuntu"]::before {
 font-family: "Ubuntu";
 content: "Ubuntu"
@@ -19,7 +13,7 @@ content: "Roboto";
 }
 
 .ql-font-Arvo {
-font-family: "Raleway";
+font-family: "Arvo";
 }
 
 .ql-font-Arvo {
@@ -32,15 +26,15 @@ font-family: "Roboto";
 
 span[data-value="Roboto"]::before {
     font-family: "Roboto";
-    content: "Roboto";
+    content: "Roboto" !important;
 }
 
-span[data-value="Avro"]::before {
-    font-family: "Ubuntu";
-    content: "Ubuntu";
+span[data-value="Arvo"]::before {
+    font-family: "Arvo";
+    content: "Arvo" !important;
 }
 
 span[data-value="Ubuntu"]::before {
     font-family: "Ubuntu";
-    content: "Ubuntu";
+    content: "Ubuntu" !important;
 }
