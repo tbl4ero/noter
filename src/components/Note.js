@@ -79,7 +79,7 @@ export default connect(
     dispatch => {
     return {
         switchActive: async(id, noteId, text) => {
-            await fetch(`http://note-r.herokuapp.com/api/note/${localStorage.getItem('loginToken')}/${noteId}`, 
+            await fetch(`https://note-r.herokuapp.com/api/note/${localStorage.getItem('loginToken')}/${noteId}`, 
                 {
                     headers: new Headers({'Content-type': 'application/x-www-form-urlencoded'}),
                     method: 'POST',
@@ -93,7 +93,7 @@ export default connect(
         deleteNote: async(id, noteId) => {
             dispatch({ type: "DELETE_NOTE", id });
             fetch(
-                `http://note-r.herokuapp.com/api/note/${localStorage.getItem('loginToken')}/${noteId}`,
+                `https://note-r.herokuapp.com/api/note/${localStorage.getItem('loginToken')}/${noteId}`,
                 {
                     method: 'DELETE',
                     mode: 'cors'

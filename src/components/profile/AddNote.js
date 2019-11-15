@@ -68,7 +68,7 @@ export default connect(null, dispatch => {
     return {
         addNewNote: async(title) => {
             let noteId;
-            await fetch(`http://note-r.herokuapp.com/api/note/${localStorage.getItem('loginToken')}`, 
+            await fetch(`https://note-r.herokuapp.com/api/note/${localStorage.getItem('loginToken')}`, 
                 {
                     headers: new Headers({'Content-type': 'application/x-www-form-urlencoded'}),
                     method: 'PUT',

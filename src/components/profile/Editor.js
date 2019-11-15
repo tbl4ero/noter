@@ -78,7 +78,7 @@ export default connect(
     dispatch => {
         return {
             changeValue: (val, active) => {
-                fetch(`http://note-r.herokuapp.com/api/note/${localStorage.getItem('loginToken')}/${active.noteId}`, 
+                fetch(`https://note-r.herokuapp.com/api/note/${localStorage.getItem('loginToken')}/${active.noteId}`, 
                     {
                         headers: new Headers({'Content-type': 'application/x-www-form-urlencoded'}),
                         method: 'POST',
