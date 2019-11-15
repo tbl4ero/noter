@@ -22,7 +22,7 @@ class Profile extends React.Component {
     }
 
     componentDidMount = async() => {
-        await fetch(`http://127.0.0.1:5000/api/profile/${localStorage.getItem('loginToken')}`, 
+        await fetch(`http://note-r.herokuapp.com/api/profile/${localStorage.getItem('loginToken')}`, 
             {
                 headers: new Headers({'Content-type': 'application/x-www-form-urlencoded'}),
                 method: 'GET',

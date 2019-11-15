@@ -19,7 +19,7 @@ class Register extends React.Component {
     }
 
     doReg = async() => {
-        let fetched = await fetch(`http://127.0.0.1:5000/api/reg/${this.state.login}`, {
+        let fetched = await fetch(`http://note-r.herokuapp.com/api/reg/${this.state.login}`, {
             headers: new Headers({'Content-type': 'application/x-www-form-urlencoded'}),
             body: `login=${this.state.login}&pass=${this.state.pass}`,
             method: 'POST',
@@ -37,7 +37,7 @@ class Register extends React.Component {
         e.preventDefault();
         await this.doReg();
         if (!this.state.userExists) {
-            let fetchUser = await fetch(`http://127.0.0.1:5000/api/profile/`, {
+            let fetchUser = await fetch(`http://note-r.herokuapp.com/api/profile/`, {
                 headers: new Headers({'Content-type': 'application/x-www-form-urlencoded'}),
                 body: `login=${this.state.login}&pass=${this.state.pass}`,
                 method: 'POST',

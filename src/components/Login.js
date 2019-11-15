@@ -23,7 +23,7 @@ class Login extends React.Component {
     handleLogin = async(e) => {
         e.preventDefault();
         this.setState({loading: true});
-        const fetchUser = await fetch(`http://127.0.0.1:5000/api/profile/`, 
+        const fetchUser = await fetch(`http://note-r.herokuapp.com/api/profile/`, 
             {
                 headers: new Headers({'Content-type': 'application/x-www-form-urlencoded'}),
                 body: `login=${this.state.login}&pass=${this.state.passwd}`,
