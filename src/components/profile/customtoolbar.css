@@ -1,0 +1,25 @@
+
+.ql-font span[data-label="Ubuntu"]::before {
+    font-family: "Ubuntu";
+    content: "Ubuntu"
+  }
+  .ql-font .ql-font span[data-label="Arvo"]::before {
+    font-family: "Arvo";
+    content: "Arvo";
+  }
+  .ql-font span[data-label="Roboto"]::before {
+    font-family: "Roboto" !important;
+    content: "Roboto";
+  }
+  
+  .ql-font-Arvo {
+    font-family: "Raleway";
+  }
+  
+  .ql-font-Arvo {
+    font-family: "Arvo";
+  }
+  
+  .ql-font-Roboto {
+    font-family: "Roboto";
+  }
