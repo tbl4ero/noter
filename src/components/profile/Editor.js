@@ -55,7 +55,7 @@ function Editor(props) {
                     placeholder="Start typing..."
                     style={{"font-size": "16px"}}
                     theme={window.screen.width > 850 ? "snow" : "bubble"}
-                    style={{maxWidth: '85vw'}}
+                    style={{maxWidth: '85vw', overflow: "auto"}}
                     bounds={".quill"}
                     value={props.value}
                     onChange={(e) => props.changeValue(e, props.activeNote)} 
