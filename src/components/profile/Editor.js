@@ -39,7 +39,7 @@ function Editor(props) {
                             toolbar: [
                                 [{'font': Font.whitelist}],
                                 [{'size': ['small', 'normal', 'large', 'huge']}],
-                                [{'align': ['right', 'center']}],
+                                [{'align': [false, 'right', 'center']}],
                                 ['bold','italic','underline','strike'],
                                 ['code-block','blockquote'],
                                 [{'list': 'ordered'}, {'list': 'bullet'}],

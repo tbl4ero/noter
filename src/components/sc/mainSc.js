@@ -281,10 +281,6 @@ const ProfileIcons = styled.div`
     padding: 10px;
     padding-bottom: 40px;
     justify-content: flex-start;
-    @media screen and (max-width: 850px) {
-        align-self: flex-start;
-        font-size: calc(18px + (34 - 18) * ((100vw - 350px) / (850 - 350)));
-    }
 `;
 
 const StyledButton = styled.button`
@@ -310,6 +306,9 @@ const SignOutBox = styled.div`
     cursor: pointer;
     padding: 5px;
     font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: .3s ease-in-out;
     border: 2px solid black;
     :hover {
