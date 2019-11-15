@@ -223,7 +223,6 @@ const AddNoteButton = styled.div`
         color: white;
         display: flex;
         border-radius: 50%;
-        box-shadow: 0px 4px 1px 0px rgba(0,0,0,1);
         border: 1px solid black;
         align-items: center;
         justify-content: center;
@@ -263,6 +262,7 @@ const Animated = styled.div`
     font-size: calc(11px + (14 - 11) * ((100vw - 1000px) / (1600 - 1000)));
     flex-direction: column;
     justify-content: center;
+    background: rgba(255,255,255,0.3);
     align-items: center;
     animation: ${props => props.open ? anim : deAnim} .3s forwards;
 `;

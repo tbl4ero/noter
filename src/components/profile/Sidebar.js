@@ -14,7 +14,7 @@ function Sidebar(props) {
                 <ProfileBox direction="column">
                     <ProfileIcons>
                         <SignOutBox onClick={props.logout}>
-                            <p style={{margin: 0}}>Sign Out</p>
+                            <p style={{padding: "5px",margin: 0}}>Sign Out</p>
                         </SignOutBox>
                     </ProfileIcons>
                     <FontAwesomeIcon style={{fontSize: "calc(70px + (90 - 70) * ((100vw - 350px) / (1600 - 350)))", borderRadius: "50%", boxShadow: "0px 0px 5px 0px rgba(0,0,0,0.75)", border: "1px solid white"}} icon={faUserCircle} />
