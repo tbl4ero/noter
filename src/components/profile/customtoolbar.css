@@ -1,25 +1,46 @@
 
+.ql-bubble .ql-picker.ql-font .ql-picker-item:before, .ql-bubble .ql-picker.ql-font .ql-picker-label:before {
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-item:before, .ql-bubble .ql-picker.ql-font .ql-picker-label:before {
+}
+
 .ql-font span[data-label="Ubuntu"]::before {
-    font-family: "Ubuntu";
-    content: "Ubuntu"
-  }
-  .ql-font .ql-font span[data-label="Arvo"]::before {
-    font-family: "Arvo";
-    content: "Arvo";
-  }
-  .ql-font span[data-label="Roboto"]::before {
-    font-family: "Roboto" !important;
-    content: "Roboto";
-  }
-  
-  .ql-font-Arvo {
-    font-family: "Raleway";
-  }
-  
-  .ql-font-Arvo {
-    font-family: "Arvo";
-  }
-  
-  .ql-font-Roboto {
+font-family: "Ubuntu";
+content: "Ubuntu"
+}
+.ql-font .ql-font span[data-label="Arvo"]::before {
+font-family: "Arvo";
+content: "Arvo";
+}
+.ql-font span[data-label="Roboto"]::before {
+font-family: "Roboto" !important;
+content: "Roboto";
+}
+
+.ql-font-Arvo {
+font-family: "Raleway";
+}
+
+.ql-font-Arvo {
+font-family: "Arvo";
+}
+
+.ql-font-Roboto {
+font-family: "Roboto";
+}
+
+span[data-value="Roboto"]::before {
     font-family: "Roboto";
-  }
+    content: "Roboto";
+}
+
+span[data-value="Avro"]::before {
+    font-family: "Ubuntu";
+    content: "Ubuntu";
+}
+
+span[data-value="Ubuntu"]::before {
+    font-family: "Ubuntu";
+    content: "Ubuntu";
+}
