@@ -37,34 +37,35 @@ class Note extends React.Component {
 
     render() {
         return (
-            <Animated  open={this.state.animate} height="100px" onTouchStart={(e) => {
-                    this.setState({swipe: true, swipeX: e.touches[0].clientX});
-                }}
-                onTouchMove={this.handleSwipe} 
-                onTouchEnd={() => this.setState({swipe: false, swipeX: null})}
-                style={{minHeight: '100px'}} 
+            <div style={{minHeight: "100px"}}>
+                <Animated open={this.state.animate} height="100px" onTouchStart={(e) => {
+                        this.setState({swipe: true, swipeX: e.touches[0].clientX});
+                    }}
+                    onTouchMove={this.handleSwipe} 
+                    onTouchEnd={() => this.setState({swipe: false, swipeX: null})}
 
                 >
-                <NoteBox
-                    onClick={() => {
-                        this.props.switchActive(this.props.id, this.props.noteId, this.props.activeText);
-                    }}
-                    active={this.props.active}
-                    bg="rgba(197,200,200,0.1)"
-                    direction="column"
-                    mobileSwipe={this.state.fullSwipe}
-                >
-                    <XButton>
-                        <FontAwesomeIcon icon={faTimes} onClick={(e) => {
-                            e.stopPropagation();
-                            this.setState({animate: true});
-                            setTimeout(() => this.props.deleteNote(this.props.id, this.props.noteId), 300);
-                        }} />
-                    </XButton>
-                    <NoteHeader style={{opacity: ".8"}} size={20}>{this.props.title}</NoteHeader>
-                    <NoteHeader style={{opacity: ".6"}} size={10}>{formatText(this.props.notes[this.props.id].text)}</NoteHeader>
-                </NoteBox>
-            </Animated>
+                    <NoteBox
+                        onClick={() => {
+                            this.props.switchActive(this.props.id, this.props.noteId, this.props.activeText);
+                        }}
+                        active={this.props.active}
+                        bg="rgba(197,200,200,0.1)"
+                        direction="column"
+                        mobileSwipe={this.state.fullSwipe}
+                    >
+                        <XButton>
+                            <FontAwesomeIcon icon={faTimes} onClick={(e) => {
+                                e.stopPropagation();
+                                this.setState({animate: false});
+                                setTimeout(() => this.props.deleteNote(this.props.id, this.props.noteId), 300);
+                            }} />
+                        </XButton>
+                        <NoteHeader style={{opacity: ".8"}} size={20}>{this.props.title}</NoteHeader>
+                        <NoteHeader style={{opacity: ".6"}} size={10}>{formatText(this.props.notes[this.props.id].text)}</NoteHeader>
+                    </NoteBox>
+                </Animated>
+            </div>
         );
     }
 }

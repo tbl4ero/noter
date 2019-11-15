@@ -1,10 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.bubble.css';
 import 'react-quill/dist/quill.snow.css';
 import {GetBack, EditorBox, DisabledBox} from '../sc/mainSc';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+
+const Font = ReactQuill.Quill.import('formats/font');
+Font.whitelist = ['Ubuntu', 'Roboto', 'Arvo'];
+ReactQuill.Quill.register(Font, true);
 
 function Editor(props) {
     return (
@@ -14,34 +19,46 @@ function Editor(props) {
                 NOTES
             </GetBack>
             {
-            props.active === null
-            ? 
-            <DisabledBox>
-                <h2>Select a note or add a new one</h2>
-            </DisabledBox>
-            :
-            <ReactQuill
-                modules = {{
-                    toolbar: [
-                    [{ 'header': [1, 2, 3, 4, false] }],
-                    ['bold', 'italic', 'underline','strike', 'blockquote'],
-                    [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-                    ['link', 'image', 'video'],
-                    ['clean']
-                    ]}}
-                    formats={[
-                        'header',
-                        'bold', 'italic', 'underline', 'strike', 'blockquote',
-                        'list', 'bullet', 'indent',
-                        'link', 'image', 'video'
-                ]}
-                style={{"font-size": "16px"}}
-                theme="snow"
-                style={{width: 'inherit'}}
-                bounds={".quill"}
-                value={props.value}
-                onChange={(e) => props.changeValue(e, props.activeNote)} 
-            />           
+                props.active === null
+                ? 
+                <DisabledBox>
+                    <h2>Select a note or add a new one</h2>
+                </DisabledBox>
+                :
+                <ReactQuill
+                    formats={
+                            [
+                            'bold', 'italic', 'underline', 'strike', 'blockquote',
+                            'list', 'bullet', 'color', 'background', 'align', 'font', 
+                            'size', 'code-block', 'image', 'video'
+                        ]
+                    }
+                    modules={
+                        {
+                            toolbar: [
+                                [{'font': Font.whitelist}],
+                                [{'size': ['small', 'normal', 'large', 'huge']}],
+                                [{'align': ['right', 'center']}],
+                                ['bold','italic','underline','strike'],
+                                ['code-block','blockquote'],
+                                [{'list': 'ordered'}, {'list': 'bullet'}],
+                                [
+                                    {'color': ['black', 'white', 'red', 'blue', 'yellow', 'green']}, 
+                                    {'background': ['black', 'white', 'red', 'blue', 'yellow', 'green']}
+                                ],
+                                ['image', 'video'],
+                                ['clean']
+                            ]
+                        }
+                    }
+                    placeholder="Start typing..."
+                    style={{"font-size": "16px"}}
+                    theme={window.screen.width > 850 ? "snow" : "bubble"}
+                    style={{maxWidth: '85vw'}}
+                    bounds={".quill"}
+                    value={props.value}
+                    onChange={(e) => props.changeValue(e, props.activeNote)} 
+                />           
             }
         </EditorBox>
     );

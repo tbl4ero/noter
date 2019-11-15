@@ -109,7 +109,7 @@ const NoteBox = styled(StyledBox)`
     }
     @media screen and (max-width: 850px) {
         width: 100vw;
-         animation: ${props => props.mobileSwipe && swipe} .5s forwards;
+        animation: ${props => props.mobileSwipe && swipe} .5s forwards;
     }
 `;
 
@@ -249,6 +249,7 @@ const anim = keyframes`
 
 const deAnim = keyframes`
     100% {
+        display: none;
         height: 0;
     }
 `;
@@ -263,7 +264,7 @@ const Animated = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    animation: ${props => props.open ? anim : deAnim} .5s forwards;
+    animation: ${props => props.open ? anim : deAnim} .3s forwards;
 `;
 
 const DisabledBox = styled.div`
@@ -350,6 +351,8 @@ const Form = styled.form`
 const FormInput = styled.input`
     margin: 20px;
     border-radius: 20px;
+    text-indent: 10px;
+    outline: none;
     border: 1px solid black;
     font-weight: 300;
     padding: 10px;
@@ -369,6 +372,7 @@ const LoginButton = styled.input`
     border-radius: 25px;
     border: 3px solid white;
     color: white;
+    outline: none;
     cursor: pointer;
     font-weight: 300;
     background: black;

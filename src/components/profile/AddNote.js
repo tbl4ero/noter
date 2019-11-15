@@ -21,9 +21,9 @@ class AddNote extends React.Component {
             if (this.state.noteTitle ==  '') {
                 this.setState({noTitle: true});
             } else {
-                this.props.addNewNote(this.state.noteTitle);
                 this.setState({hidden: !this.state.hidden, noteTitle: '', noTitle: false,});
-                setTimeout(() => this.setState({ mobileHidden: false}), 500)
+                setTimeout(() => this.setState({ mobileHidden: false }), 500);
+                this.props.addNewNote(this.state.noteTitle);
             }
     }
 
