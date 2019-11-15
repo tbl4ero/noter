@@ -58,7 +58,6 @@ function Editor(props) {
                     style={{maxWidth: '85vw'}}
                     bounds={".quill"}
                     value={props.value}
-                    onFocus={(e) => e.target.focus({preventScroll: true})}
                     onChange={(e) => props.changeValue(e, props.activeNote)} 
                 />           
             }
