@@ -420,11 +420,11 @@ const TitleInput = styled.input`
     border: none;
     font-size: 20px;
     width: 45vw;
-    margin: 5vw;
+    margin: 2vw;
     padding: 5px;
     outline: none;
     font-style: italic;
-    text-indent: 5px;
+    text-indent: 2px;
     border-bottom: 3px solid #F5F5F5;
 `;
 
