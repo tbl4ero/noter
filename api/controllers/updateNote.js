@@ -14,7 +14,8 @@ function updateNote(req, res) {
         }, 
         {
             $set: {
-                "notes.$.text": req.body.text
+                "notes.$.text": req.body.text,
+                "notes.$.title": req.body.title
             }
         }, 
         {new: true, useFindAndModify: false}

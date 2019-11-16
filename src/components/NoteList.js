@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 function NoteList(props) {
     return (
-        <StyledBox style={{marginTop: "20px", overflow: 'auto'}} mobileHeight="50vh" mobileWidth="100vw" direction="column">
+        <StyledBox style={{marginTop: "20px", overflow: 'auto'}} mobileHeight="90vh" mobileWidth="100vw" direction="column">
             {props.notes.length === 0 ? <h1 style={{textAlign: "center"}}>You don't have any notes</h1> : props.notes.map((note, id) => 
             {
                 

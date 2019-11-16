@@ -7,11 +7,15 @@ import { CSSTransition } from 'react-transition-group';
 
 
 function formatText(incoming) {
-    incoming = incoming.replace(/<\/?[^>]+(>|$)/g, " ");
-    let res = incoming.length > 20 
-            ? `${incoming.slice(0,20)}...` 
-            : incoming;
-    return res;
+    console.log(incoming);
+    if (incoming != null) {
+        incoming = incoming.replace(/<\/?[^>]+(>|$)/g, " ");
+        let res = incoming.length > 20 
+                ? `${incoming.slice(0,20)}...` 
+                : incoming;
+        return res;
+    }
+    return '';
 }
 
 class Note extends React.Component {

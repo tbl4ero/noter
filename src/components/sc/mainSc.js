@@ -80,7 +80,7 @@ const EditorBox = styled(StyledBox)`
     display: grid;
     overflow: hidden;
     @media screen and (max-width: 850px) {
-        grid-template-rows: 10vh auto;
+        grid-template-rows: 15vh auto;
     }
 `;
 
@@ -131,7 +131,7 @@ const ProfileBox = styled(StyledBox)`
     font-size: calc(12px + (18 - 12) * ((100vw - 1000px) / (1600 - 1000)));
     padding-bottom: 20px;
     @media screen and (max-width: 850px) {
-        padding-bottom: 20px;
+        padding-bottom: 0;
         font-size: calc(18px + (28 - 18) * ((100vw - 350px) / (850 - 350)));
     }
 `;
@@ -222,13 +222,11 @@ const AddNoteButton = styled.div`
         order: 3;
         color: white;
         display: flex;
-        border-radius: 50%;
-        border: 1px solid black;
         align-items: center;
         justify-content: center;
         color: black;
         align-content: center;
-        font-size: 75px;
+        font-size: 25px;
         display: ${props => props.hidden ? "none" : "block"};
     }
 `;
@@ -252,7 +250,6 @@ const deAnim = keyframes`
         height: 0;
     }
 `;
-
 
 const Animated = styled.div`
     height: ${props => props.height};
@@ -281,6 +278,10 @@ const ProfileIcons = styled.div`
     padding: 10px;
     padding-bottom: 40px;
     justify-content: flex-start;
+    @media screen and (max-width: 850px) {
+        padding-bottom: 0;
+        padding: 0;
+    }
 `;
 
 const StyledButton = styled.button`
@@ -297,14 +298,13 @@ const StyledButton = styled.button`
 const FormWrapper = styled.div`
     display: flex;
     @media screen and (max-width: 850px) {
-        max-width: 50vw;
+        display: none;
     }
 `;
 
 const SignOutBox = styled.div`
     border-radius: 8px;
     cursor: pointer;
-    padding: 5px;
     font-size: 14px;
     display: flex;
     justify-content: center;
@@ -405,6 +405,27 @@ const Loading = styled.div`
     animation: .2s ${rotation} infinite;
 `;
 
+const MobileHeader = styled.div`
+    display: flex;
+    flex-direction: column;
+    @media screen and (max-width: 850px) {
+        flex-direction: row;
+        max-height: 10vh;
+        align-items: center;
+        justify-content: space-around;
+    }
+`;
 
+const TitleInput = styled.input`
+    border: none;
+    font-size: 20px;
+    width: 45vw;
+    margin: 5vw;
+    padding: 5px;
+    outline: none;
+    font-style: italic;
+    text-indent: 5px;
+    border-bottom: 3px solid #F5F5F5;
+`;
 
-export { Loading, LoginButton, LoginHeader, FormInput, Form, ContentBox, Header, MainContainer, SignOutBox, GetBack, FormWrapper, ErrorMessage, StyledButton, StyledInput,ProfileIcons, DisabledBox,AddNoteButton, StyledBox, NoteHeader, NoteBox, MainBox, Circle, ProfileBox, SideBar, EditorBox, XButton, ToggleCircle, NoteForm, Animated };
+export { TitleInput, MobileHeader, Loading, LoginButton, LoginHeader, FormInput, Form, ContentBox, Header, MainContainer, SignOutBox, GetBack, FormWrapper, ErrorMessage, StyledButton, StyledInput,ProfileIcons, DisabledBox,AddNoteButton, StyledBox, NoteHeader, NoteBox, MainBox, Circle, ProfileBox, SideBar, EditorBox, XButton, ToggleCircle, NoteForm, Animated };

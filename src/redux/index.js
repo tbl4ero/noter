@@ -33,8 +33,9 @@ function reducer(state = defaultState, action) {
             let newActive = {
                 active: state.active
             }
-            newActive.active.text = action.activeText;
-            return Object.assign({},state, newActive);
+            newActive.active.title = action.title === null ? state.active.title : action.title;
+            newActive.active.text = action.activeText === null ? state.active.text : action.activeText;
+            return Object.assign({}, state, newActive);
         }
         case "DELETE_NOTE": {
             const newNotesObj = {
