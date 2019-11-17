@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect, BrowserRouter as Router, Link } from 'react-router-dom';
-import { Animated, Loading, LoginButton, Form, FormInput, LoginHeader } from './sc/mainSc';
+import { Animated, Loading } from './sc/mainSc'; 
+import { LoginButton, Form, FormInput, LoginHeader } from './sc/forms';
 
 class Register extends React.Component {
     state = {

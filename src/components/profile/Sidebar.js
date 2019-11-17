@@ -1,5 +1,5 @@
 import React from 'react';
-import { MobileHeader, SignOutBox, ProfileBox, SideBar, ProfileIcons } from '../sc/mainSc';
+import { MobileHeader, SignOutBox, ProfileBox, SideBar, ProfileIcons } from '../sc/sidebar';
 import NoteList from '../NoteList';
 import {connect} from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

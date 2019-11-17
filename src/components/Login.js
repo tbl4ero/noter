@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
-import { Animated, Loading, LoginButton, Form, FormInput, LoginHeader } from './sc/mainSc';
+import { Animated, Loading } from './sc/mainSc'; 
+import { LoginButton, Form, FormInput, LoginHeader } from './sc/forms';
 
 class Login extends React.Component {
     

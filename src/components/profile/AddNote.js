@@ -9,12 +9,11 @@ import {
 import {
   FormWrapper,
   ErrorMessage,
-  StyledButton,
   StyledInput,
-  StyledBox,
   AddNoteButton,
-  Animated
-} from "../sc/mainSc";
+  StyledButton
+} from "../sc/addNote.js";
+import { Animated, StyledBox } from "../sc/mainSc";
 
 class AddNote extends React.Component {
   state = {

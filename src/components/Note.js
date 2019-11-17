@@ -1,10 +1,9 @@
 import React from 'react';
-import { NoteBox, NoteHeader, XButton, Animated } from './sc/mainSc';
+import { NoteBox, NoteHeader, XButton } from "./sc/note";
+import { Animated } from './sc/mainSc';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { CSSTransition } from 'react-transition-group';
-
 
 function formatText(incoming) {
     console.log(incoming);
@@ -90,9 +89,7 @@ export default connect(
                     body: `text=${text}`,
                     mode: 'cors'
                 }
-            )
-            dispatch({active: id, type: "SELECT_NOTE"});
-            dispatch({type: "SWITCH_VIEW", editor: true});
+            ).then(() => dispatch({active: id, type: "SELECT_NOTE"})).then(() => dispatch({type: "SWITCH_VIEW", editor: true}));
         },
         deleteNote: async(id, noteId) => {
             dispatch({ type: "DELETE_NOTE", id });

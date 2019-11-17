@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar";
 import store from "../../redux/index";
 import { Provider } from "react-redux";
 import Editor from "./Editor";
-import { MainBox } from "../sc/mainSc";
+import { MainBox, Loading } from "../sc/mainSc";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
@@ -54,14 +54,27 @@ class Profile extends React.Component {
       <div>
         {this.state.logged === false ? <Redirect to="/" /> : ""}
         <Provider store={store}>
-          <MainBox view={this.props.editor} direction="row">
-            <Sidebar
-              logout={this.logout}
-              notesArr={this.props.notes}
-              login={this.state.login}
-            />
-            <Editor></Editor>
-          </MainBox>
+          {this.state.loading ? (
+            <div
+              style={{
+                marginTop: "50px",
+                padding: "auto",
+                display: "flex",
+                justifyContent: "center"
+              }}
+            >
+              <Loading style={{ margin: "0 auto" }} />
+            </div>
+          ) : (
+            <MainBox view={this.props.editor} direction="row">
+              <Sidebar
+                logout={this.logout}
+                notesArr={this.props.notes}
+                login={this.state.login}
+              />
+              <Editor></Editor>
+            </MainBox>
+          )}
         </Provider>
       </div>
     );
