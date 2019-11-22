@@ -9,10 +9,10 @@ import { ContentBox, MainContainer, Header } from './components/sc/mainSc';
 
 function App() {
   return (
-    <div className="main-wrapper">
+    <div>
       <BrowserRouter>
       <Switch>
-        <Route path="/profile/:token" component={ProfileWrapper} />
+        <Route path="/profile/:login" component={ProfileWrapper} />
         <Route path="/" render={() => 
           <MainContainer>
             <Header>

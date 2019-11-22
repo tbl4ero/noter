@@ -3,6 +3,13 @@ import { Redirect, BrowserRouter as Router, Link } from 'react-router-dom';
 import { Animated, Loading } from './sc/mainSc'; 
 import { LoginButton, Form, FormInput, LoginHeader } from './sc/forms';
 
+const headers = (
+    <Animated open height={"150px"}>
+        <LoginHeader >Sign Up</LoginHeader>
+        <LoginHeader secondary>Enter login and and password for your new account</LoginHeader>
+    </Animated>
+);
+
 class Register extends React.Component {
     state = {
         login: '',
@@ -63,30 +70,35 @@ class Register extends React.Component {
         return (
         <div>
             {
-                localStorage.getItem('loginToken') 
+                localStorage.getItem('login') 
                 ? 
-                    <Redirect to={`/profile/${localStorage.getItem('loginToken')}`} />
+                <Redirect to={`/profile/${localStorage.getItem('login')}`} />
                 : 
-                    <div> 
-                        {this.state.loading ? 
-                        <Loading />
-                        :  
-                        <div className="login-wrapper reg">
-                            <Animated open height={"150px"}>
-                                <LoginHeader >Sign Up</LoginHeader>
-                                <LoginHeader secondary>Enter login and and password for your new account</LoginHeader>
-                            </Animated>
-                            {this.state.userExists && <LoginHeader error secondary>Chosen username is already taken</LoginHeader>}
-                            <Form  onSubmit={this.handleReg}>
-                                <FormInput required onChange={this.handleLoginChange} type="text" value={this.state.login} placeholder="Login" />
-                                <FormInput required onChange={this.handlePwdChange} type="password" value={this.state.pass} placeholder="Password" />
-                                <LoginButton type="submit" value="Sign Up" />
-                            </Form>
-                            <Link to="/">Sign In</Link>
-                        </div>  
-                        }
-
-                    </div>
+                <div> 
+                    {this.state.loading ? 
+                    <Loading />
+                    :  
+                    <div>
+                        {headers}
+                        {this.state.userExists && <LoginHeader error secondary>Chosen username is already taken</LoginHeader>}
+                        <Form  onSubmit={this.handleReg}>
+                            <FormInput 
+                                required 
+                                onChange={this.handleLoginChange} 
+                                type="text" 
+                                value={this.state.login} 
+                                placeholder="Login" />
+                            <FormInput 
+                                required 
+                                onChange={this.handlePwdChange} 
+                                type="password" value={this.state.pass} 
+                                placeholder="Password" />
+                            <LoginButton type="submit" value="Sign Up" />
+                        </Form>
+                        <Link to="/">Sign In</Link>
+                    </div>  
+                    }
+                </div>
             }
         </div>);
     }

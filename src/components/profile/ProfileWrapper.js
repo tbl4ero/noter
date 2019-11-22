@@ -4,10 +4,6 @@ import { Provider } from 'react-redux';
 import Profile from './Profile';
 
 class ProfileWrapper extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <Provider store={store}>
@@ -15,7 +11,6 @@ class ProfileWrapper extends React.Component {
             </Provider>
         );
     }
-
 }
 
 export default ProfileWrapper;

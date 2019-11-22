@@ -24,31 +24,24 @@ class AddNote extends React.Component {
     mobile: window.screen.width < 850 ? true : false
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   handleNoteAdd = () => {
     if (this.state.noteTitle == "") {
       this.setState({ noTitle: true });
-    } else {
-      this.setState({
-        hidden: !this.state.hidden,
-        noteTitle: "",
-        noTitle: false
-      });
-      setTimeout(() => this.setState({ mobileHidden: false }), 500);
-      this.props.addNewNote(this.state.noteTitle);
+      return;
     }
+    setTimeout(() => this.setState({ mobileHidden: false }), 500);
+    this.setState({
+      hidden: !this.state.hidden,
+      noteTitle: "",
+      noTitle: false
+    });
+    this.props.addNewNote(this.state.noteTitle);
   };
 
   render() {
     return (
       <StyledBox
-        bg="rgba(0,0,0,.2)"
         centered
-        mobileHeight=""
-        order={0}
         direction="column"
       >
         <Animated height="100px" open={!this.state.mobileHidden}>
@@ -73,10 +66,7 @@ class AddNote extends React.Component {
               }}
               hidden={this.state.mobileHidden}
             >
-              <FontAwesomeIcon
-                style={{ borderRadius: "50%" }}
-                icon={faPlusCircle}
-              />
+              <FontAwesomeIcon icon={faPlusCircle} />
             </AddNoteButton>
           )}
         </Animated>
@@ -93,19 +83,8 @@ class AddNote extends React.Component {
             </StyledButton>
           </FormWrapper>
           {this.state.noTitle && (
-            <Animated
-              height="100px"
-              style={{ height: 35 }}
-              open={this.state.noTitle}
-            >
-              <ErrorMessage
-                style={{
-                  lineHeight: 0,
-                  margin: 0,
-                  padding: 0,
-                  color: "#ec644b"
-                }}
-              >
+            <Animated height="35px" open={this.state.noTitle}>
+              <ErrorMessage>
                 * you must specify a title
               </ErrorMessage>
             </Animated>
@@ -118,7 +97,7 @@ class AddNote extends React.Component {
 
 export default connect(null, dispatch => {
   return {
-    addNewNote: async title => {
+    addNewNote: async (title = '') => {
       let noteId;
       await fetch(
         `https://note-r.herokuapp.com/api/note/${localStorage.getItem(
@@ -137,7 +116,7 @@ export default connect(null, dispatch => {
         .then(data => (noteId = data.noteId));
       dispatch({
         type: "ADD_NOTE",
-        note: { title: title, text: "", noteId: noteId }
+        note: { title, text: "", noteId: noteId }
       });
     },
     addNoteClient: () => {

@@ -12,102 +12,105 @@ const Font = ReactQuill.Quill.import("formats/font");
 Font.whitelist = ["Ubuntu", "Roboto", "Arvo"];
 ReactQuill.Quill.register(Font, true);
 
-function Editor(props) {
-  return (
-    <EditorBox view={props.editor} className="quill">
-      <div style={{ display: window.screen.width < 850 ? "block" : "none" }}>
-        <GetBack
-          onClick={() => {
-            props.switchView();
-          }}
-        >
-          <FontAwesomeIcon icon={faChevronLeft} />
-          NOTES
-        </GetBack>
-        {window.screen.width < 850 && (
-          <TitleInput
-            value={props.title}
-            onChange={e => {
-              props.changeValue(
-                e.target.value,
-                props.value,
-                props.activeNote
-              );
+class Editor extends React.Component {
+  render() {
+    return (
+      <EditorBox view={this.props.editor} className="quill">
+        <div style={{ display: window.screen.width < 850 ? "block" : "none" }}>
+          <GetBack
+            onClick={() => {
+              this.props.switchView();
+              this.inputRef.value = "";
             }}
-            placeholder="Title..."
-          ></TitleInput>
+          >
+            <FontAwesomeIcon icon={faChevronLeft} />
+            NOTES
+          </GetBack>
+          {window.screen.width < 850 && (
+            <TitleInput
+              value={this.props.title}
+              ref={ref => this.inputRef = ref}
+              onChange={e => {
+                this.props.changeValue(
+                  e.target.value,
+                  this.props.value,
+                  this.props.activeNote
+                );
+              }}
+              placeholder="Title..."
+            ></TitleInput>
+          )}
+        </div>
+        {this.props.active === null ? (
+          <DisabledBox>
+            <h2>Select a note or add a new one</h2>
+          </DisabledBox>
+        ) : (
+          <ReactQuill
+            formats={[
+              "bold",
+              "italic",
+              "underline",
+              "strike",
+              "blockquote",
+              "list",
+              "bullet",
+              "color",
+              "background",
+              "align",
+              "font",
+              "size",
+              "code-block",
+              "image",
+              "video"
+            ]}
+            modules={{
+              toolbar: [
+                [{ font: Font.whitelist }],
+                [{ size: ["small", "normal", "large", "huge"] }],
+                [{ align: [false, "right", "center"] }],
+                ["bold", "italic", "underline", "strike"],
+                ["code-block", "blockquote"],
+                [{ list: "ordered" }, { list: "bullet" }],
+                [
+                  {
+                    color: ["black", "white", "red", "blue", "yellow", "green"]
+                  },
+                  {
+                    background: [
+                      "black",
+                      "white",
+                      "red",
+                      "blue",
+                      "yellow",
+                      "green"
+                    ]
+                  }
+                ],
+                ["image", "video"],
+                ["clean"]
+              ]
+            }}
+            placeholder="Start typing..."
+            style={{ "font-size": "16px" }}
+            theme={window.screen.width > 850 ? "snow" : "bubble"}
+            style={{ maxWidth: "100vw", overflow: "hidden", display: "grid",overflowY: "auto", gridTemplateRows: ((window.screen.width > 850) && "40px auto") }}
+            bounds={".quill"}
+            value={this.props.value}
+            onChange={e =>
+              this.props.changeValue(this.props.title, e, this.props.activeNote)
+            }
+          />
         )}
-      </div>
-      {props.active === null ? (
-        <DisabledBox>
-          <h2>Select a note or add a new one</h2>
-        </DisabledBox>
-      ) : (
-        <ReactQuill
-          formats={[
-            "bold",
-            "italic",
-            "underline",
-            "strike",
-            "blockquote",
-            "list",
-            "bullet",
-            "color",
-            "background",
-            "align",
-            "font",
-            "size",
-            "code-block",
-            "image",
-            "video"
-          ]}
-          modules={{
-            toolbar: [
-              [{ font: Font.whitelist }],
-              [{ size: ["small", "normal", "large", "huge"] }],
-              [{ align: [false, "right", "center"] }],
-              ["bold", "italic", "underline", "strike"],
-              ["code-block", "blockquote"],
-              [{ list: "ordered" }, { list: "bullet" }],
-              [
-                {
-                  color: ["black", "white", "red", "blue", "yellow", "green"]
-                },
-                {
-                  background: [
-                    "black",
-                    "white",
-                    "red",
-                    "blue",
-                    "yellow",
-                    "green"
-                  ]
-                }
-              ],
-              ["image", "video"],
-              ["clean"]
-            ]
-          }}
-          placeholder="Start typing..."
-          style={{ "font-size": "16px" }}
-          theme={window.screen.width > 850 ? "snow" : "bubble"}
-          style={{ maxWidth: "85vw", overflow: "auto" }}
-          bounds={".quill"}
-          value={props.value}
-          onChange={e =>
-            props.changeValue(props.title, e, props.activeNote)
-          }
-        />
-      )}
-    </EditorBox>
-  );
+      </EditorBox>
+    );
+  }
 }
 
 export default connect(
   state => {
     return {
       value: state.active.text || "",
-      initValue: state.active.id === null ? "" : state.active.text,
       active: state.active.id,
       editor: state.editor,
       title: state.active.title || "",
@@ -116,7 +119,7 @@ export default connect(
   },
   dispatch => {
     return {
-      changeValue: (title, val, active, e) => {
+      changeValue: (title, val, active) => {
         fetch(
           `https://note-r.herokuapp.com/api/note/${localStorage.getItem(
             "loginToken"
@@ -130,7 +133,7 @@ export default connect(
             mode: "cors"
           }
         );
-        dispatch({ title, activeText: val, type: "EDITOR_UPDATE" });
+        dispatch({type: "_UPDATE", title, activeText: val});
       },
       switchView: () => {
         dispatch({ type: "SWITCH_VIEW", editor: false });

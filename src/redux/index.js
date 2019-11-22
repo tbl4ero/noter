@@ -13,23 +13,19 @@ function reducer(state = defaultState, action) {
         }
         case "SET_NOTES": {
             delete action['type'];
-            console.log(action, state);
             if (action.notes.length === 0) {
                 return state;
             }
             let firstStateActive = action.notes[action.active];
             firstStateActive.id = 0;
-            return Object.assign({},state,action,{ active: firstStateActive});
+            return Object.assign({},state,action,{ active: firstStateActive });
         }
         case "SELECT_NOTE": {
-            delete action['type']
-            console.log(action.active);
             let newActive = state.notes[action.active];
             newActive.id = action.active;
             return Object.assign({},state, action, {active:newActive});
         }
-        case "EDITOR_UPDATE": {
-            delete action['type'];
+        case "_UPDATE": {
             let newActive = {
                 active: state.active
             }

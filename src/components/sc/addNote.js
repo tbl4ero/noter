@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const ErrorMessage = styled.h4`
   font-size: calc(14px + (12 - 14) * ((100vw - 350px) / (1600 - 350)));
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  color: #ec644b;
 `;
 
 export const FormWrapper = styled.div`

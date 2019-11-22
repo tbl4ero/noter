@@ -3,6 +3,13 @@ import { Redirect, Link } from 'react-router-dom';
 import { Animated, Loading } from './sc/mainSc'; 
 import { LoginButton, Form, FormInput, LoginHeader } from './sc/forms';
 
+const loginHeaders = (
+    <Animated height={"150px"} open>
+        <LoginHeader>Sign In</LoginHeader>
+        <LoginHeader secondary >Enter your login and password to sign in</LoginHeader>
+    </Animated>
+);
+
 class Login extends React.Component {
     
     state = {
@@ -49,11 +56,9 @@ class Login extends React.Component {
         return (
             <div>
                 {localStorage.getItem('login') ? 
-                    <Redirect to={
-                        {
-                            pathname:`/profile/${localStorage.getItem('loginToken')}`, 
-                            loggedIn: true
-                        }
+                    <Redirect to={{
+                            pathname:`/profile/${localStorage.getItem('login')}`, 
+                            loggedIn: true}
                     } />
                 :
                 <div>
@@ -61,11 +66,8 @@ class Login extends React.Component {
                     ? 
                     <Loading />
                     :
-                    <div className="login-wrapper">
-                        <Animated height={"150px"} open>
-                            <LoginHeader>Sign In</LoginHeader>
-                            <LoginHeader secondary >Enter your login and password to sign in</LoginHeader>
-                        </Animated>
+                    <div>
+                        {loginHeaders}
                         {this.state.wrongInfo ? <LoginHeader error secondary>Incorrect login or password</LoginHeader> : ''}
                         <Form onSubmit={this.handleLogin}>
                             <FormInput required onChange={this.handleLoginChange} 

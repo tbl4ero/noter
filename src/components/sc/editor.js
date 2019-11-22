@@ -36,6 +36,7 @@ export const GetBack = styled.div`
   margin: 4px;
   border-radius: 10px;
   height: 20px;
+  min-height: 20px;
   margin: auto 5px;
   padding: 10px;
   color: royalblue;

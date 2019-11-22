@@ -1,5 +1,19 @@
 import styled, { keyframes } from "styled-components";
 
+export const anim = keyframes`
+    0% {
+        height: 0;
+        display: none;
+    }
+`;
+
+export const deAnim = keyframes`
+    100% {
+        display: none;
+        height: 0;
+    }
+`;
+
 export const StyledBox = styled.div`
   display: flex;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -43,20 +57,6 @@ export const MainBox = styled.div`
 export const MainContainer = styled.div`
   display: grid;
   grid-template-rows: 10vh auto;
-`;
-
-export const anim = keyframes`
-    0% {
-        height: 0;
-        display: none;
-    }
-`;
-
-export const deAnim = keyframes`
-    100% {
-        display: none;
-        height: 0;
-    }
 `;
 
 export const Animated = styled.div`

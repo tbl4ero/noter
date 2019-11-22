@@ -41,3 +41,7 @@ span[data-value="Ubuntu"]::before {
     font-family: "Ubuntu";
     content: "Ubuntu" !important;
 }
+
+.ql-container.ql-snow {
+    overflow: auto !important;
+}
