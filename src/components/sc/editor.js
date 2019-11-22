@@ -9,6 +9,7 @@ export const TitleInput = styled.input`
   margin: 2vw;
   padding: 5px;
   outline: none;
+  box-sizing: border-box;
   font-style: italic;
   text-indent: 2px;
   border-bottom: 3px solid #f5f5f5;
