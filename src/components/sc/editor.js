@@ -5,7 +5,7 @@ export const TitleInput = styled.input`
   border: none;
   font-size: 20px;
   width: 45vw;
-  min-height: 20px;
+  min-height: 40px;
   margin: 2vw;
   padding: 5px;
   outline: none;

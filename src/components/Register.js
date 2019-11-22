@@ -56,7 +56,7 @@ class Register extends React.Component {
                 data = JSON.parse(data);
                 userToken = data.token;
                 localStorage.setItem('loginToken', userToken);
-                localStorage.setItem('loggedIn', 'true');
+                localStorage.setItem('login', this.state.login);
                 this.setState({regDone: true, loading: false});
             });
         }
