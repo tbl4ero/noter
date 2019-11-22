@@ -3,8 +3,6 @@ import Login from './components/Login';
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import Register from './components/Register';
 import ProfileWrapper from './components/profile/ProfileWrapper';
-import { Note } from './components/Note';
-import { connect } from 'react-redux';
 import { ContentBox, MainContainer, Header } from './components/sc/mainSc';
 
 function App() {
