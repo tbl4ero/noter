@@ -6,7 +6,7 @@ import { LoginButton, Form, FormInput, LoginHeader } from './sc/forms';
 const headers = (
     <Animated open height={"150px"}>
         <LoginHeader >Sign Up</LoginHeader>
-        <LoginHeader secondary>Enter login and and password for your new account</LoginHeader>
+        <LoginHeader secondary>Create a new account</LoginHeader>
     </Animated>
 );
 

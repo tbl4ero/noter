@@ -22,7 +22,7 @@ function App() {
                 <Switch>
                   <Route path="/" exact component={Login}></Route>
                   <Route path="/register" exact component={Register} />
-                  <Route path="*" render={() => <h1 className="no-page">Страница не найдена</h1>} />
+                  <Route path="*" render={() => <h1 className="no-page">The page you requested was not found</h1>} />
                 </Switch>
             </ContentBox>
           </MainContainer>
