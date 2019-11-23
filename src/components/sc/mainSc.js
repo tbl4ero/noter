@@ -114,7 +114,6 @@ const viewAnimReverse = keyframes`
   }
 `;
 
-
 export const MainBox = styled.div`
   display: grid;
   grid-template-rows: 100vh;
@@ -125,6 +124,9 @@ export const MainBox = styled.div`
     grid-template-columns: none;
     transition: 0.3s ease-in-out;
     animation: ${props => props.view ? viewAnim : viewAnimReverse} .15s forwards;
+    @supports (-webkit-overflow-scrolling: touch) {
+      grid-template-columns: ${props => props.view ? "0 100vw" : "100vw 0"};
+    }
   }
 `;
 
