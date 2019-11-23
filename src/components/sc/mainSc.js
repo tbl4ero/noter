@@ -42,6 +42,15 @@ export const swipe = keyframes`
     }
 `;
 
+const viewAnim = keyframes`
+  0% {
+    grid-template-columns: "0 100vw";
+  }
+  100% {
+    grid-template-columns: "100vw 0";
+  }
+`;
+
 export const MainBox = styled.div`
   display: grid;
   grid-template-rows: 100vh;

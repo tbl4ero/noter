@@ -34,12 +34,6 @@ export const StyledInput = styled.input`
   text-indent: 5px;
   max-width: 10vw;
   border-radius: 10px;
-  @media screen and (max-width: 850px) {
-    max-width: none;
-    outline: none;
-    width: 40vw;
-    font-size: calc(18px + (30 - 18) * ((100vw - 350px) / (850 - 350)));
-  }
 `;
 
 export const AddNoteButton = styled.div`
@@ -70,14 +64,6 @@ export const AddNoteButton = styled.div`
     }
   }
   @media screen and (max-width: 850px) {
-    order: 3;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    align-content: center;
     font-size: 25px;
-    display: ${props => (props.hidden ? "none" : "block")};
   }
 `;

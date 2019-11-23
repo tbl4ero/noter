@@ -5,11 +5,11 @@ export const TitleInput = styled.input`
   border: none;
   font-size: 20px;
   width: 45vw;
-  min-height: 40px;
+  max-width: 100px;
+  min-height: 20px;
   margin: 2vw;
   padding: 5px;
   outline: none;
-  box-sizing: border-box;
   font-style: italic;
   text-indent: 2px;
   border-bottom: 3px solid #f5f5f5;
@@ -27,7 +27,7 @@ export const EditorBox = styled(StyledBox)`
   display: grid;
   overflow: hidden;
   @media screen and (max-width: 850px) {
-    grid-template-rows: 15vh auto;
+    grid-template-rows: 100px auto;
   }
 `;
 
