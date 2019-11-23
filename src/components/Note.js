@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-function formatText(incoming) {
+function formatText(incoming, len) {
     if (incoming != null) {
         incoming = incoming.replace(/<\/?[^>]+(>|$)/g, " ");
-        let res = incoming.length > 20 
-                ? `${incoming.slice(0,20)}...` 
+        let res = incoming.length > len
+                ? `${incoming.slice(0,len)}...` 
                 : incoming;
         return res;
     }
@@ -61,8 +61,8 @@ class Note extends React.Component {
                         <XButton>
                             <FontAwesomeIcon icon={faTimes} onClick={this.deleteNote} />
                         </XButton>
-                        <NoteHeader style={{opacity: ".8"}} size={20}>{this.props.title}</NoteHeader>
-                        <NoteHeader style={{opacity: ".6"}} size={10}>{formatText(this.props.notes[this.props.id].text)}</NoteHeader>
+                        <NoteHeader style={{opacity: ".8"}} size={20}>{formatText(this.props.notes[this.props.id].title, 10)}</NoteHeader>
+                        <NoteHeader style={{opacity: ".6"}} size={10}>{formatText(this.props.notes[this.props.id].text, 20)}</NoteHeader>
                     </NoteBox>
                 </Animated>
             </div>

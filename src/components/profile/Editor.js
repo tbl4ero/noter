@@ -15,7 +15,7 @@ ReactQuill.Quill.register(Font, true);
 class Editor extends React.Component {
   render() {
     return (
-      <EditorBox view={this.props.editor} className="quill">
+      <EditorBox className="quill">
         <div style={{ display: window.screen.width < 850 ? "block" : "none" }}>
           <GetBack
             onClick={() => {

@@ -44,12 +44,76 @@ export const swipe = keyframes`
 
 const viewAnim = keyframes`
   0% {
-    grid-template-columns: "0 100vw";
+    grid-template-columns: 100vw 0;
+  }
+  15% {
+    grid-template-columns: 85vw auto;
+  }
+  25% {
+    grid-template-columns: 75vw auto;
+  }
+  35% {
+    grid-template-columns: 65vw auto;
+  }
+  45% {
+    grid-template-columns: 55vw auto;
+  }
+  50% {
+    grid-template-columns: auto auto;
+  }
+  55% {
+    grid-template-columns: auto 55vw;
+  }
+  65% {
+    grid-template-columns: auto 65vw;
+  }
+  75% {
+    grid-template-columns: auto 75vw;
+  }
+  85% {
+    grid-template-columns: auto 85vw;
   }
   100% {
-    grid-template-columns: "100vw 0";
+    grid-template-columns: 0 100vw;
   }
 `;
+
+const viewAnimReverse = keyframes`
+  0% {
+    grid-template-columns: 0 100vw;
+  }
+  15% {
+    grid-template-columns: auto 85vw;
+  }
+  25% {
+    grid-template-columns: auto 75vw;
+  }
+  35% {
+    grid-template-columns: auto 65vw;
+  }
+  45% {
+    grid-template-columns: auto 55vw;
+  }
+  50% {
+    grid-template-columns: auto auto;
+  }
+  55% {
+    grid-template-columns: 55vw auto;
+  }
+  65% {
+    grid-template-columns: 65vw auto;
+  }
+  75% {
+    grid-template-columns: 75vw auto;
+  }
+  85% {
+    grid-template-columns: 85vw auto;
+  }
+  100% {
+    grid-template-columns: 100vw 0;
+  }
+`;
+
 
 export const MainBox = styled.div`
   display: grid;
@@ -58,8 +122,9 @@ export const MainBox = styled.div`
   overflow: hidden;
   grid-template-columns: 15vw auto;
   @media screen and (max-width: 850px) {
+    grid-template-columns: none;
     transition: 0.3s ease-in-out;
-    grid-template-columns: ${props => (props.view ? "0 100vw" : "100vw 0")};
+    animation: ${props => props.view ? viewAnim : viewAnimReverse} .15s forwards;
   }
 `;
 
