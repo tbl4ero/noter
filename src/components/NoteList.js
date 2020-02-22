@@ -13,6 +13,7 @@ class NoteList extends React.Component {
   };
 
   render() {
+    console.log(this.props.notes);
     return (
       <StyledBox
         style={{ marginTop: "20px", overflow: "hidden" }}
@@ -35,9 +36,9 @@ class NoteList extends React.Component {
               .map((note, id) => {
                 return (
                   <Note
+                    note={note}
                     id={id}
                     active={id == this.props.active ? true : false}
-                    {...note}
                     key={note.noteId}
                   />
                 );

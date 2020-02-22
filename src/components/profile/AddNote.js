@@ -14,6 +14,7 @@ import {
   StyledButton
 } from "../sc/addNote.js";
 import { Animated, StyledBox } from "../sc/mainSc";
+import { apiURL } from '../../const';
 
 class AddNote extends React.Component {
   state = {
@@ -21,7 +22,7 @@ class AddNote extends React.Component {
     noteTitle: "",
     noTitle: false,
     mobileHidden: false,
-    mobile: window.screen.width < 850 ? true : false
+    mobile: this.props.mobile
   };
 
   handleNoteAdd = () => {
@@ -51,7 +52,6 @@ class AddNote extends React.Component {
                 icon={faEdit}
                 onClick={async () => {
                   await this.props.addNewNote("");
-                  this.props.addNoteClient();
                 }}
               />
             </AddNoteButton>
@@ -95,12 +95,14 @@ class AddNote extends React.Component {
   }
 }
 
-export default connect(null, dispatch => {
+export default connect(
+  state => ({ mobile: state.mobileDisplay }), 
+  dispatch => {
   return {
     addNewNote: async (title = '') => {
       let noteId;
       await fetch(
-        `https://note-r.herokuapp.com/api/note/${localStorage.getItem(
+        `${apiURL}/api/note/${localStorage.getItem(
           "loginToken"
         )}`,
         {
@@ -116,10 +118,12 @@ export default connect(null, dispatch => {
         .then(data => (noteId = data.noteId));
       dispatch({
         type: "ADD_NOTE",
-        note: { title, text: "", noteId: noteId }
+        note: { title, text: "", noteId }
       });
-    },
-    addNoteClient: () => {
+      dispatch({
+        type: "SELECT_NOTE",
+        active: { id: 0, title, text: "", noteId }
+      });
       dispatch({ type: "SWITCH_VIEW", editor: true });
     }
   };

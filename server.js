@@ -5,9 +5,10 @@ const server = express();
 const path = require('path');
 
 server.use(routes.router);
-server.use(express.static(path.resolve(__dirname,'build')));
+server.use(express.static(path.resolve(__dirname,'public')));
+
 server.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
 connectDb().then(async() => {

@@ -34,7 +34,7 @@ const User = mongoose.model('User', userSchema);
 User.on('index', () => console.log("created index"));
 
 const connectDb = () => {
-    return mongoose.connect(( process.env.MONGODB_URI || "mongodb+srv://adm:fktlfey@cluster0-z38lz.gcp.mongodb.net/noter?retryWrites=true&w=majority")
+    return mongoose.connect(("mongodb+srv://adm:fktlfey@cluster0-z38lz.gcp.mongodb.net/noter?retryWrites=true&w=majority")
         , {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 };
 

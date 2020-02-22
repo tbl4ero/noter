@@ -4,6 +4,7 @@ import { Animated } from './sc/mainSc';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { apiURL } from '../const';
 
 function formatText(incoming, len) {
     if (incoming != null) {
@@ -40,10 +41,11 @@ class Note extends React.Component {
     deleteNote = (e) => {
         e.stopPropagation();
         this.setState({animate: false});
-        setTimeout(() => this.props.deleteNote(this.props.id, this.props.noteId), 300);
+        setTimeout(() => this.props.deleteNote(this.props.id, this.props.note.noteId), 300);
     }
 
     render() {
+        console.log(this.props.notes[this.props.id]);
         return (
             <div style={{minHeight: "100px"}}>
                 <Animated open={this.state.animate} height="100px" 
@@ -52,7 +54,7 @@ class Note extends React.Component {
                     onTouchEnd={() => this.setState({swipe: false, swipeX: null})}
                 >
                     <NoteBox
-                        onClick={() => this.props.switchActive(this.props.id, this.props.noteId, this.props.activeText)}
+                        onClick={() => this.props.switchActive(this.props.note, this.props.id)}
                         active={this.props.active}
                         bg="rgba(197,200,200,0.1)"
                         direction="column"
@@ -71,32 +73,29 @@ class Note extends React.Component {
 }
 
 export default connect(
-    state => ({
-        noteId: state.active.noteId,
-        notes: state.notes,
-        activeText: state.active.text
-    }),
-    dispatch => {
-    return {
-        switchActive: async(id, noteId, text) => {
-            await fetch(`https://note-r.herokuapp.com/api/note/${localStorage.getItem('loginToken')}/${noteId}`, 
-                {
-                    headers: new Headers({'Content-type': 'application/x-www-form-urlencoded'}),
-                    method: 'POST',
-                    body: `text=${text}`,
-                    mode: 'cors'
-                }
-            ).then(() => dispatch({active: id, type: "SELECT_NOTE"})).then(() => dispatch({type: "SWITCH_VIEW", editor: true}));
-        },
-        deleteNote: async(id, noteId) => {
-            dispatch({ type: "DELETE_NOTE", id });
-            fetch(
-                `https://note-r.herokuapp.com/api/note/${localStorage.getItem('loginToken')}/${noteId}`,
-                {
-                    method: 'DELETE',
-                    mode: 'cors'
-                }
-            );
+    state => {
+        return {
+            noteId: state.active.noteId,
+            notes: state.notes,
+            activeText: state.active.text
         }
-    };
-})(Note);
+    },
+    dispatch => {
+        return {
+            switchActive: async(note, id) => {
+                dispatch({id, active: note, type: "SELECT_NOTE"});
+                dispatch({type: "SWITCH_VIEW", editor: true});
+            },
+            deleteNote: async(id, noteId) => {
+                dispatch({ type: "DELETE_NOTE", id });
+                fetch(
+                    `${apiURL}/api/note/${localStorage.getItem('loginToken')}/${noteId}`,
+                    {
+                        method: 'DELETE',
+                        mode: 'cors'
+                    }
+                );
+            }
+        };
+    }
+)(Note);

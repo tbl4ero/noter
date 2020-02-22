@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from './components/Login';
+import {Login} from './components/Login';
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import Register from './components/Register';
 import ProfileWrapper from './components/profile/ProfileWrapper';
