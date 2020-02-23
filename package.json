@@ -8,6 +8,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.5",
     "body-parser": "^1.19.0",
+    "concurrently": "^5.1.0",
     "cors": "^2.8.5",
     "mongodb": "^3.3.2",
     "mongoose": "^5.7.3",
@@ -25,7 +26,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "concurrently --kill-others \"npm run start\" \"node server\"",
+    "prod": "node -r dotenv/config server",
+    "dev": "concurrently --kill-others \"npm run start\" \"node -r dotenv/config server\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

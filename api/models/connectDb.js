@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const noteSchema = new mongoose.Schema({
     title: {type: String},
     text: {type: String},
@@ -33,8 +32,8 @@ userSchema.set('versionKey', false);
 const User = mongoose.model('User', userSchema);
 User.on('index', () => console.log("created index"));
 
-const connectDb = () => {
-    return mongoose.connect(("mongodb+srv://adm:fktlfey@cluster0-z38lz.gcp.mongodb.net/noter?retryWrites=true&w=majority")
+const connectDb = (address) => {
+    return mongoose.connect((address)
         , {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 };
 
