@@ -24,6 +24,9 @@ login | password |
 Clone or download the repo 
 `git clone https://github.com/tbl4ero/noter.git`
 
+Install all the dependencies
+`npm install`
+
 
 Setup enviromental variables in `.env`
 ```
